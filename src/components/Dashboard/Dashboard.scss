@@ -1,0 +1,16 @@
+@import "src/breakpoints";
+
+.adv__dashboard {
+  > h1 {
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  &__data {
+    margin-top: 1rem;
+
+    @include lg {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import "src/breakpoints";
+
+.adv__etl-v-chart {
+  flex: 1;
+  padding: 1rem;
+  border: 1px dotted grey;
+  margin-top: 1rem;
+
+  @include lg {
+    margin-top: initial;
+    margin-left: 1rem;
+  }
+}

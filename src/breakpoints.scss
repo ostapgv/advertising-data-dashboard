@@ -1,0 +1,11 @@
+// Simplified version for breakpoints
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
