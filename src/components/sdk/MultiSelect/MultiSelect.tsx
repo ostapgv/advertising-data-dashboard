@@ -10,16 +10,14 @@ export interface MultiSelectProps {
 
 const MultiSelect: React.FC<MultiSelectProps> = ({ options, onChange, name, size, className }) => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement> | undefined) => {
-    if (event) {
-      const selectedOptions = Array.from(event?.target.options)
-        .filter((option) => option.selected)
-        .map((option) => option.value);
-      onChange(selectedOptions);
-    }
+    const selectedOptions = Array.from(event!.target.options)
+      .filter((option) => option.selected)
+      .map((option) => option.value);
+    onChange(selectedOptions);
   };
 
   return (
-    <select name={name} size={size} multiple className={className} onChange={handleChange}>
+    <select data-testid="multiselect" name={name} size={size} multiple className={className} onChange={handleChange}>
       {options.map((option) => (
         <option key={option} value={option}>
           {option}

@@ -1,7 +1,13 @@
 import React from 'react';
 
-export default () => (
-  <div data-testid="chart-wrapper">
-    <canvas data-testid="canvas" />
-  </div>
-);
+let renderIndex = 0;
+
+export default () => {
+  renderIndex++;
+  return (
+    <div data-testid="chart-wrapper">
+      <span data-testid="canvas-render-index">{renderIndex}</span>
+      <canvas data-testid="canvas" />
+    </div>
+  );
+};
