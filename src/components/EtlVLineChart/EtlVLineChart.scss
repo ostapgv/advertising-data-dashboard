@@ -5,6 +5,7 @@
   padding: 1rem;
   border: 1px dotted grey;
   margin-top: 1rem;
+  overflow: hidden;
 
   @include lg {
     margin-top: initial;

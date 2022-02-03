@@ -1,22 +1,32 @@
 import './Dashboard.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCsvDataSource } from '../../hooks/useCsvDataSource';
 import EtlVLineChart, { EtlVData } from '../EtlVLineChart/EtlVLineChart';
 import Filters from '../EtlVFilters/EtlVFilters';
 import EtlVLineInfo from '../EtlVInfo/EtlVInfo';
+import { getEtlVData } from '../EtlVLineChart/chart.utils';
 
 const Dashboard: React.FC = () => {
   const rawData = useCsvDataSource<string[]>('/local.csv');
   const [chartData, setChartData] = useState<EtlVData>();
 
+  useEffect(() => {
+    if (rawData) {
+      const initialChartData = getEtlVData([], [], rawData);
+      setChartData(initialChartData);
+    }
+  }, [rawData, setChartData]);
+
   return (
     <div className="adv__dashboard">
       <h1>Adverity Advertising Data ETL-V Challenge</h1>
       <EtlVLineInfo />
-      <div className="adv__dashboard__data">
-        {rawData && <Filters rawData={rawData} onChange={setChartData} />}
-        {chartData && <EtlVLineChart {...chartData} />}
-      </div>
+      {rawData && chartData && (
+        <div className="adv__dashboard__data">
+          <Filters rawData={rawData} onChange={setChartData} />
+          <EtlVLineChart {...chartData} />
+        </div>
+      )}
     </div>
   );
 };

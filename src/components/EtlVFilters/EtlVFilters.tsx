@@ -1,5 +1,5 @@
 import './EtlVFilters.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useUniqColumnValues } from '../../hooks/useUniqColumnValues';
 import MultiSelect from '../sdk/MultiSelect/MultiSelect';
 import { getEtlVData } from '../EtlVLineChart/chart.utils';
@@ -16,10 +16,6 @@ const EtlVFilters: React.FC<EtlVFiltersProps> = ({ rawData, onChange }) => {
   const [selectedDataSources, setSelectedDataSources] = useState<string[]>([]);
   const [selectedCampaigns, setSelectedCampaigns] = useState<string[]>([]);
 
-  useEffect(() => {
-    onChange(getEtlVData([], [], rawData));
-  }, [rawData, onChange]);
-
   const handleApplyFilters = () => {
     onChange(getEtlVData(selectedDataSources, selectedCampaigns, rawData));
   };
@@ -27,7 +23,7 @@ const EtlVFilters: React.FC<EtlVFiltersProps> = ({ rawData, onChange }) => {
   return (
     <div className="adv__etl-v-filters">
       <label htmlFor="dataSources">Data sources</label>
-      <MultiSelect name="dataSources" options={dataSources} onChange={setSelectedDataSources} />
+      <MultiSelect name="dataSources" size={4} options={dataSources} onChange={setSelectedDataSources} />
 
       <label htmlFor="campaigns">Campaigns</label>
       <MultiSelect name="campaigns" size={10} options={campaigns} onChange={setSelectedCampaigns} />

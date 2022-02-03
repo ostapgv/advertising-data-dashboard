@@ -1,6 +1,6 @@
 import { zip } from 'lodash';
 
-export const mapStringsToNumbers = (strings: string[]): number[] => strings?.map((it) => Number(it)) || [];
+export const mapStringsToNumbers = (strings?: string[]): number[] => strings?.map((it) => Number(it)) || [];
 
 export const transposeData = (data: string[][]) => zip(...data) as string[][];
 

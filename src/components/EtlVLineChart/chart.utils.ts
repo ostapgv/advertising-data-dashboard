@@ -12,10 +12,14 @@ export const getEtlVData = (
   if (!rawData) return;
 
   let filteredRawData: string[][] = rawData;
-  if (selectedDataSources.length || selectedCampaigns.length) {
+  if (selectedDataSources.length && selectedCampaigns.length) {
     filteredRawData = rawData.filter(
       ([, dataSource, campaign]) => selectedDataSources.includes(dataSource) && selectedCampaigns.includes(campaign),
     );
+  } else if (selectedDataSources.length) {
+    filteredRawData = rawData.filter(([, dataSource]) => selectedDataSources.includes(dataSource));
+  } else if (selectedCampaigns.length) {
+    filteredRawData = rawData.filter(([, , campaign]) => selectedCampaigns.includes(campaign));
   }
 
   const decimated = decimateData(filteredRawData);
