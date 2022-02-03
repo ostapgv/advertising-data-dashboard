@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+# Advertising Data ETL-V challenge app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CreateReactApp-based web application that:
+- fetches advertising data from a given endpoint,
+- visualize it on a simple interactive dashboard.
 
-## Available Scripts
+## Running and testing locally
 
-In the project directory, you can run:
+- Run `yarn` in the project root folder to install necessary dependencies.
+- Run `yarn start` to start application locally.
+- Run `yarn test` to run the tests and generate coverage report.
+- Run `yarn test:watch` to run the tests in watch mode.
+- The rest repeats scripts available in Create React App template. You can check more details [here](https://create-react-app.dev/docs/available-scripts).
 
-### `yarn start`
+## Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [React v17](reactjs.org) and [Create React App](https://github.com/facebook/create-react-app) as a basis for the app.
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit/integration testing.
+- [Papa Parse](https://www.papaparse.com/) for scv file parsing.
+- [Chart.js](https://www.chartjs.org/) for data visualisation.
+- [Typescript](https://www.typescriptlang.org/), [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Sass](https://sass-lang.com/) e.g.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## More technical details
+- Used mobile-first approach for responsiveness.
+- Used simplified layout based on the flexbox.
+- Used simplified breakpoints version.
+- Applied BEM (no extra setup made for styled components or css modules).
+- Used data decimation for performance reasons.
+- Didn't include any additional UI library for sake of simplification and again, performance reasons. There's a better option with the autocomplete support and data virtualization, but simpler version is chosen.
+- Routing, Error handling, project structure for different pages, jsdoc, proper jest config etc. are out of scope.
+- Used simple version for css normalizing.
 
-### `yarn test`
+## Project structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/                          - source code root  
+  components/                 - folder with all the components
+    SomeComponent/            - component folder example, can contain component itself, styles, tests, locally used hooks, mocks, configs, utils etc.
+      __tests__/              - contain tests if there are more than one ts/tsx file in the folder (for more clear structure)
+      __mocks__/              - contains component's mock implementation
+      SomeComponent.tsx       - component itself
+      SomeComponent.text.tsx  - test
+      SomeComponent.scss      - component styling
+    sdk/                      - common reusable components like Input, Dopdown etc. The same sub-structure as in `components/` folder.
+    hooks/                    - custom hooks
+    utils/                    - utils splitted by the purpose
+```
+This structure can be extended in case of further development.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

@@ -7,6 +7,7 @@ import EtlVLineInfo from '../EtlVInfo/EtlVInfo';
 import { getEtlVData } from '../EtlVLineChart/chart.utils';
 
 const Dashboard: React.FC = () => {
+  // Csv file url set to the local fallback option to speed-up the downloading, it can be easily replaced to provided url.
   const rawData = useCsvDataSource<string[]>('/local.csv');
   const [chartData, setChartData] = useState<EtlVData>();
 
