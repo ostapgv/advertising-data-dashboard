@@ -14,21 +14,25 @@ CreateReactApp-based web application that:
 
 ## Tech stack
 
-- [React v17](reactjs.org) and [Create React App](https://github.com/facebook/create-react-app) as a basis for the app.
+- [React v17](https://reactjs.org/) and [Create React App](https://github.com/facebook/create-react-app) as a basis for the app.
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit/integration testing.
 - [Papa Parse](https://www.papaparse.com/) for scv file parsing.
 - [Chart.js](https://www.chartjs.org/) for data visualisation.
 - [Typescript](https://www.typescriptlang.org/), [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Sass](https://sass-lang.com/) e.g.
 
 ## More technical details
+
 - Used mobile-first approach for responsiveness.
 - Used simplified layout based on the flexbox.
 - Used simplified breakpoints version.
 - Applied BEM (no extra setup made for styled components or css modules).
-- Used data decimation for performance reasons.
 - Didn't include any additional UI library for sake of simplification and again, performance reasons. There's a better option with the autocomplete support and data virtualization, but simpler version is chosen.
 - Routing, Error handling, project structure for different pages, jsdoc, proper jest config etc. are out of scope.
 - Used simple version for css normalizing.
+- Removed previously applied data decimation. Grouping/summing of clicks and impressions by dates significantly reduces final data set.
+- The `getEtlVData` method  is called in the effect just one time when the rawData is defined. 
+  It's done because of the requirement: <i>Initially, no Datasource or Campaign is selected, hence the chart should show Clicks and Impressions over time for the entire data set.</i>
+  Further `getEtlVData` calls with selected filters happen only inside `<Filters />` component's `handleApplyFilters` method.
 
 ## Project structure
 
